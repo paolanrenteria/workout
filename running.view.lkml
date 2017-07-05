@@ -16,9 +16,9 @@ view: running {
     sql: ${TABLE}.duration ;;
   }
 
-  dimension: heart_rate {
-    type: number
-    sql: ${TABLE}.heart_rate ;;
+  dimension: hr {
+    type: string
+    sql: ${TABLE}.hr ;;
   }
 
   dimension: latitude {
@@ -31,9 +31,9 @@ view: running {
     sql: ${TABLE}.longitude ;;
   }
 
-  dimension: start_time {
-    type: string
-    sql: ${TABLE}.start_time ;;
+  dimension_group: start_time {
+    type: time
+    sql: PARSE_TIMESTAMP("%a, %d %b %Y %X", ${TABLE}.start_time) ;;
   }
 
   dimension: total_calories {
