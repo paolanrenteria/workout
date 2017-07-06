@@ -10,12 +10,5 @@ explore: running {}
 
 explore: workout_log {}
 
-explore: something {
-  from: workout_log
-  join: running {}
-}
-
-explore: paola {
-  from: running
-}
+explore: dt_workout {}
 # - explore: workout_log
