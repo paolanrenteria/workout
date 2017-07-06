@@ -1,7 +1,7 @@
 view: dt_workout {
   derived_table: {
     sql: SELECT altitude FROM workout.running ;;
-  persist_for: "5 minutes"
+  sql_trigger_value: SELECT 1 ;;
   }
 
   dimension: altitude {
