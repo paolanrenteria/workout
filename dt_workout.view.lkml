@@ -1,13 +1,8 @@
 view: dt_workout {
   derived_table: {
-    sql: SELECT
-    {% if _view._name == 'dt_workout' %}
-        altitude
-    {% else %}
-        hr
-    {% endif %}
+    sql: SELECT altitude, hr
         FROM workout.running ;;
-  sql_trigger_value: SELECT CURRENT_TIMESTAMP() ;;
+  sql_trigger_value: SELECT 1 ;;
   }
 
   dimension: altitude {
