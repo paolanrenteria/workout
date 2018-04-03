@@ -1,14 +1,30 @@
 view: dt_workout {
   derived_table: {
-    sql: SELECT altitude FROM workout.running ;;
-  sql_trigger_value: SELECT 1 ;;
+    sql: SELECT
+    {% if _view._name == 'dt_workout' %}
+        altitude
+    {% else %}
+        hr
+    {% endif %}
+        FROM workout.running ;;
+  sql_trigger_value: SELECT CURRENT_TIMESTAMP() ;;
   }
 
   dimension: altitude {
     type: number
     sql: ${TABLE}.altitude ;;
   }
-  # # You can specify the table name if it's different from the view name:
+
+  dimension: hr {
+    type: string
+    sql: ${TABLE}.hr ;;
+  }
+
+#   dimension: calories {
+#     type: number
+#     sql: ${TABLE}.calories ;;
+#   }
+#   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #
   # # Define your dimensions and measures here, like this:
